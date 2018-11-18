@@ -1,0 +1,13 @@
+/*- Tags -*/
+body {
+  background-color: #999;
+  font: 13px/14px Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+p {
+  text-align: center;
+  padding: 20px;
+}
+
+/*- Classes -*/

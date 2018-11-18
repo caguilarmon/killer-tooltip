@@ -1,16 +1,54 @@
-/*- Tags -*/
-body {
-  background-color: #999;
-  font: 13px/14px Helvetica, Arial, sans-serif;
-  color: #333;
-}
-
 /*- Classes -*/
 .tooltip {
-  color: green;
+  position: relative;
+  /* display: inline-block; */
+  color: red;
+  text-decoration: underline;
 }
 
 .tooltip:hover {
-  color: blue;
+  color: yellow;
   cursor: pointer;
+}
+
+.tooltipText {
+  position: absolute;
+  width: 250px;
+  background-color: black;
+  text-align: center;
+  text-decoration:none;
+  color: #bbb;
+  padding: 6px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.tooltipText--right {
+  transform: translateY(-25%);
+  left: 105%;
+}
+
+.tooltipText--left {
+  transform: translateY(-25%);
+  right: 105%;
+}
+
+.tooltipText--top {
+  /* bottom: 100%; */ /*opt2*/
+  /* left: 50%;  */
+  /* transform: translateX(-50%); */ /*opt2*/
+  /* right: -150%; */
+  bottom: 100%;
+  left: 50%;
+  margin-left: -125px;
+}
+
+.tooltipText--bottom {
+  /* top: 100%; */ /*opt2*/
+  /* left: 50%;  */
+  /* transform: translateX(-50%); */ /*opt2*/
+  /* right: 105%; */
+  top: 100%;
+  left: 50%;
+  margin-left: -125px;
 }

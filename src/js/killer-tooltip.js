@@ -34,7 +34,7 @@ const tooltip = function(settings) {
         default:
           $(currentTooltip).children('.tooltipText').addClass('tooltipText--right');
 
-      }
+      };
     };
 
     const getTooltipData = (currentTooltip) => {

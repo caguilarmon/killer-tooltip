@@ -1,6 +1,6 @@
-Cool Tooltips library
+Killer Tooltips library
 ======
 
-What is Cool-Tooltips?
+What is Killer-Tooltips?
 ------
-Cool-Tooltips is a JS-jQuery custom library to add tooltips with custom settings...
+Killer-Tooltips is a JS-jQuery custom library to add tooltips with custom settings...

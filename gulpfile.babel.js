@@ -16,11 +16,10 @@ gulp.task('server', () => {
 });
 
 gulp.task('minifyStyles', () => {
-  return gulp.src('./src/css/killer-toolip-styles.css')
+  return gulp.src('./src/css/killer-tooltip-styles.css')
   .pipe(csso())
   .pipe(rename({ extname: '.min.css'}))
   .pipe(gulp.dest('./src/css'))
-  .pipe(connect.reload());
 });
 
 gulp.task('minifyScripts', () => {
@@ -29,18 +28,31 @@ gulp.task('minifyScripts', () => {
   .pipe(uglify())
   .pipe(rename({ extname: '.min.js'}))
   .pipe(gulp.dest('./src/js'))
-  .pipe(connect.reload());
 });
 
 gulp.task('copy:vendorjs', () => {
-  return gulp.src('./node_modules/jquery/dist/jquery.min.js')
+  gulp.src('./node_modules/jquery/dist/jquery.min.js')
   .pipe(gulp.dest('./src/js/vendor'));
+
+  gulp.src('./node_modules/jquery/dist/jquery.min.js')
+ .pipe(gulp.dest('./test/js/vendor'));
+});
+
+gulp.task('copyKillerTooltips:js', () => {
+  return gulp.src('./src/js/killer-tooltip.js')
+  .pipe(gulp.dest('./test/js'));
+  .pipe(connect.reload());
+});
+
+gulp.task('copyKillerTooltips:styles', () => {
+  return gulp.src('./src/css/killer-tooltip-styles.css')
+  .pipe(gulp.dest('./test/css'))
+  .pipe(connect.reload());
 });
 
 gulp.task('watch', () => {
-  // gulp.watch('')
-  gulp.watch(['./src/css/*.css', './test/css/**/*.css'], ['minifyStyles']);
-  gulp.watch('./src/js/*.js', ['minifyScripts']);
+  gulp.watch(['./src/css/*.css', './test/css/**/*.css'], ['minifyStyles', 'copyKillerTooltips:styles']);
+  gulp.watch('./src/js/*.js', ['minifyScripts', 'copyKillerTooltips:js']);
 });
 
 gulp.task('clean', () => {
@@ -54,6 +66,8 @@ gulp.task('clean', () => {
 gulp.task('build', ['clean'], () => {
   runSequence(
     'copy:vendorjs',
+    'copyKillerTooltips:js',
+    'copyKillerTooltips:styles',
     'minifyStyles',
     'minifyScripts'
   );

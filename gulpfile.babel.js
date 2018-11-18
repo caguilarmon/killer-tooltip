@@ -15,6 +15,11 @@ gulp.task('server', () => {
   });
 });
 
+gulp.task('html', () => {
+  return gulp.src('./test/index.html')
+  .pipe(connect.reload());
+});
+
 gulp.task('minifyStyles', () => {
   return gulp.src('./src/css/killer-tooltip-styles.css')
   .pipe(csso())
@@ -40,7 +45,7 @@ gulp.task('copy:vendorjs', () => {
 
 gulp.task('copyKillerTooltips:js', () => {
   return gulp.src('./src/js/killer-tooltip.js')
-  .pipe(gulp.dest('./test/js'));
+  .pipe(gulp.dest('./test/js'))
   .pipe(connect.reload());
 });
 
@@ -51,8 +56,9 @@ gulp.task('copyKillerTooltips:styles', () => {
 });
 
 gulp.task('watch', () => {
+  gulp.watch(['./test/index.html'], ['html']);
   gulp.watch(['./src/css/*.css', './test/css/**/*.css'], ['minifyStyles', 'copyKillerTooltips:styles']);
-  gulp.watch('./src/js/*.js', ['minifyScripts', 'copyKillerTooltips:js']);
+  gulp.watch(['./src/js/*.js', './test/js/*.js'], ['minifyScripts', 'copyKillerTooltips:js']);
 });
 
 gulp.task('clean', () => {
@@ -65,6 +71,7 @@ gulp.task('clean', () => {
 
 gulp.task('build', ['clean'], () => {
   runSequence(
+    'html',
     'copy:vendorjs',
     'copyKillerTooltips:js',
     'copyKillerTooltips:styles',

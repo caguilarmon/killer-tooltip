@@ -9,9 +9,27 @@
 const tooltip = function(settings) {
     const tooltips = $(settings.tooltipClass);
     const tooltipPosition = settings.tooltipPosition;
+    let supportsTouch = false;
 
-    const hideTooltip = (currentTooltip) => {
-      $(currentTooltip).children('.tooltipText').detach();
+    const checkTouchSupport = () => {
+      /*
+      * iOS & android
+      */
+      if ('ontouchstart' in window){
+        supportsTouch = true;
+      /*
+      * Win8
+      */
+      }else if(window.navigator.msPointerEnabled){
+        supportsTouch = true;
+      }else if ('ontouchstart' in document.documentElement){
+        supportsTouch = true;
+      };
+      return supportsTouch;
+    };
+
+    const hideTooltip = (elem) => {
+      $(elem).children('.tooltipText').detach();
     };
 
     const showTooltip = (currentTooltip) => {
@@ -34,11 +52,28 @@ const tooltip = function(settings) {
         default:
           $(currentTooltip).children('.tooltipText').addClass('tooltipText--right');
 
-      }
+      };
     };
 
     const getTooltipData = (currentTooltip) => {
       return $(currentTooltip).data('text');
+    };
+
+    const onMouseclick = () => {
+      $('.tooltip').click(function() {
+        let currentTooltip = $(this);
+        if (currentTooltip.hasClass('touch-tooltip')) {
+          hideTooltip(currentTooltip);
+          currentTooltip.removeClass('touch-tooltip tooltip--hover');
+          currentTooltip.addClass('no-hover');
+        }else{
+          showTooltip(currentTooltip);
+          currentTooltip.addClass('touch-tooltip tooltip--hover');
+          currentTooltip.removeClass('no-hover');
+        };
+        $('span.tooltip').not(currentTooltip).removeClass('touch-tooltip tooltip--hover');
+        hideTooltip($('span.tooltip').not(currentTooltip));
+      });
     };
 
     const onMouseLeave = () => {
@@ -56,8 +91,13 @@ const tooltip = function(settings) {
     };
 
     const init = () => {
-      onMouseEnter();
-      onMouseLeave();
+      checkTouchSupport();
+      if(supportsTouch){
+        onMouseclick();
+      }else{
+        onMouseEnter();
+        onMouseLeave();
+      }
     };
 
     init();

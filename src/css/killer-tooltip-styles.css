@@ -4,11 +4,12 @@
   /* display: inline-block; */
   color: red;
   text-decoration: underline;
+  cursor: pointer;
 }
 
-.tooltip:hover {
+.tooltip:not(.no-hover):hover,
+.tooltip--hover {
   color: yellow;
-  cursor: pointer;
 }
 
 .tooltipText {

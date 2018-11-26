@@ -7,9 +7,12 @@
   cursor: pointer;
 }
 
-.tooltip:not(.no-hover):hover,
+.tooltip:not(:focus):hover,
 .tooltip--hover {
   color: yellow;
+}
+.tooltip:focus {
+  outline: none;
 }
 
 .tooltipText {

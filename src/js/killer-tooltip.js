@@ -62,14 +62,13 @@ const tooltip = function(settings) {
     const onMouseclick = () => {
       $('.tooltip').click(function() {
         let currentTooltip = $(this);
+        currentTooltip.attr('tabindex', '0');
         if (currentTooltip.hasClass('touch-tooltip')) {
           hideTooltip(currentTooltip);
           currentTooltip.removeClass('touch-tooltip tooltip--hover');
-          currentTooltip.addClass('no-hover');
         }else{
           showTooltip(currentTooltip);
           currentTooltip.addClass('touch-tooltip tooltip--hover');
-          currentTooltip.removeClass('no-hover');
         };
         $('span.tooltip').not(currentTooltip).removeClass('touch-tooltip tooltip--hover');
         hideTooltip($('span.tooltip').not(currentTooltip));

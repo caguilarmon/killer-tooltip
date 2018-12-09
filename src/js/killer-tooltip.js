@@ -3,12 +3,11 @@
 * A library to create tooltips with custom settings.
 *
 * @param {Object} settings - Settings for the tooltips
-* @param {Object} settings.tooltipClass - Html tag's CSS class
 * @param {Object} settings.tooltipPosition - Tooltip position
 */
 
 const tooltip = function(settings) {
-    const tooltips = $(settings.tooltipClass);
+    const tooltips = $('.tooltip');
     const tooltipPosition = settings.tooltipPosition;
     let supportsTouch = false;
 
@@ -38,7 +37,7 @@ const tooltip = function(settings) {
     * @param {Object} elem - Html tag
     */
     const hideTooltip = (elem) => {
-      $(elem).children('.tooltipText').detach();
+      $(elem).children('.tooltip-text').detach();
     };
 
     /**
@@ -48,23 +47,23 @@ const tooltip = function(settings) {
     */
     const showTooltip = (currentTooltip) => {
       const tooltipData = getTooltipData(currentTooltip);
-      $(currentTooltip).append(`<span class="tooltipText">${tooltipData}</span>`);
+      $(currentTooltip).append(`<span class="tooltip-text">${tooltipData}</span>`);
 
       switch (tooltipPosition) {
         case 'right':
-          $(currentTooltip).children('.tooltipText').addClass('tooltipText--right');
+          $(currentTooltip).children('.tooltip-text').addClass('tooltip-text--right');
           break;
         case 'left':
-          $(currentTooltip).children('.tooltipText').addClass('tooltipText--left');
+          $(currentTooltip).children('.tooltip-text').addClass('tooltip-text--left');
           break;
         case 'top':
-          $(currentTooltip).children('.tooltipText').addClass('tooltipText--top');
+          $(currentTooltip).children('.tooltip-text').addClass('tooltip-text--top');
           break;
         case 'bottom':
-          $(currentTooltip).children('.tooltipText').addClass('tooltipText--bottom');
+          $(currentTooltip).children('.tooltip-text').addClass('tooltip-text--bottom');
           break;
         default:
-          $(currentTooltip).children('.tooltipText').addClass('tooltipText--right');
+          $(currentTooltip).children('.tooltip-text').addClass('tooltip-text--right');
 
       };
     };

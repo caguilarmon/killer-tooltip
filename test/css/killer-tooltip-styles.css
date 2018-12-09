@@ -1,24 +1,13 @@
 /*- Classes -*/
 .tooltip {
   position: relative;
-  /* display: inline-block; */
-  color: red;
-  text-decoration: underline;
   cursor: pointer;
-}
-
-.tooltip:not(:focus):hover,
-.tooltip--hover {
-  color: yellow;
-}
-.tooltip:focus {
-  outline: none;
 }
 
 .tooltipText {
   position: absolute;
   width: 250px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, .7);
   text-align: center;
   text-decoration:none;
   color: #bbb;

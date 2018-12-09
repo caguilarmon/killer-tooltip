@@ -11,3 +11,10 @@ p {
 }
 
 /*- Classes -*/
+.center {
+  text-align: center;
+}
+
+.tooltips {
+  color: red;
+}

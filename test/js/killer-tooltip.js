@@ -2,8 +2,9 @@
 * Killer Tooltips - ES6/jQuery. (c) 2018 Carlos Aguilar Montoya
 * A library to create tooltips with custom settings.
 *
-*
-*
+* @param {Object} settings - Settings for the tooltips
+* @param {Object} settings.tooltipClass - Html tag's CSS class
+* @param {Object} settings.tooltipPosition - Tooltip position
 */
 
 const tooltip = function(settings) {
@@ -11,6 +12,9 @@ const tooltip = function(settings) {
     const tooltipPosition = settings.tooltipPosition;
     let supportsTouch = false;
 
+    /**
+    * Checks if the device supports touch
+    */
     const checkTouchSupport = () => {
       /*
       * iOS & android
@@ -28,10 +32,20 @@ const tooltip = function(settings) {
       return supportsTouch;
     };
 
+    /**
+    * Hides the tooltip
+    *
+    * @param {Object} elem - Html tag
+    */
     const hideTooltip = (elem) => {
       $(elem).children('.tooltipText').detach();
     };
 
+    /**
+    * Shows the tooltip and sets the position
+    *
+    * @param {Object} currentTooltip - Html tag
+    */
     const showTooltip = (currentTooltip) => {
       const tooltipData = getTooltipData(currentTooltip);
       $(currentTooltip).append(`<span class="tooltipText">${tooltipData}</span>`);
@@ -55,14 +69,21 @@ const tooltip = function(settings) {
       };
     };
 
+    /**
+    * Gets the tooltip's data text to show
+    *
+    * @param {Object} currentTooltip - Html tag
+    */
     const getTooltipData = (currentTooltip) => {
       return $(currentTooltip).data('text');
     };
 
+    /**
+    * Adds or removes the tooltip upon click for mobile/touch devices
+    */
     const onMouseclick = () => {
       $('.tooltip').click(function() {
-        let currentTooltip = $(this);
-        currentTooltip.attr('tabindex', '0');
+        const currentTooltip = $(this);
         if (currentTooltip.hasClass('touch-tooltip')) {
           hideTooltip(currentTooltip);
           currentTooltip.removeClass('touch-tooltip tooltip--hover');
@@ -75,20 +96,29 @@ const tooltip = function(settings) {
       });
     };
 
+    /**
+    * Removes the tooltip upon mouse leave for pointer devices
+    */
     const onMouseLeave = () => {
       $('.tooltip').mouseleave(function() {
-        let currentTooltip = $(this);
+        const currentTooltip = $(this);
         hideTooltip(currentTooltip);
       });
     };
 
+    /**
+    * Adds the tooltip upon mouse enter for pointer devices
+    */
     const onMouseEnter = () => {
       $('.tooltip').mouseenter(function() {
-        let currentTooltip = $(this);
+        const currentTooltip = $(this);
         showTooltip(currentTooltip);
       });
     };
 
+    /**
+    * Initializes the tooltips, either for touch or pointer devices
+    */
     const init = () => {
       checkTouchSupport();
       if(supportsTouch){

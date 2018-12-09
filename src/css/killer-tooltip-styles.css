@@ -4,10 +4,12 @@
   cursor: pointer;
 }
 
-.tooltipText {
+.tooltip-text {
   position: absolute;
   width: 250px;
   background-color: rgba(0, 0, 0, .7);
+  font-size: 12px;
+  font-weight: normal;
   text-align: center;
   text-decoration:none;
   color: #bbb;
@@ -16,24 +18,24 @@
   z-index: 1;
 }
 
-.tooltipText--right {
+.tooltip-text--right {
   transform: translateY(-25%);
   left: 105%;
 }
 
-.tooltipText--left {
+.tooltip-text--left {
   transform: translateY(-25%);
   right: 105%;
 }
 
-.tooltipText--top {
+.tooltip-text--top {
   bottom: 100%;
   left: 50%;
-  margin-left: -125px;
+  transform: translateX(-50%);
 }
 
-.tooltipText--bottom {
+.tooltip-text--bottom {
   top: 100%;
   left: 50%;
-  margin-left: -125px;
+  transform: translateX(-50%);  
 }

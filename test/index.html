@@ -11,13 +11,64 @@
   <link rel="stylesheet" href="./css/killer-tooltip-styles.css">
 </head>
 <body>
-  <p>
-    This is my <span class="tooltip tooltips" data-text="This is the text that appears when I hover the text span element">text to test it!</span>
-  </p>
-  <p>
-    Some cool text is displayed but <span class="tooltip tooltips two" data-text="Second tooltips' text goes here">Look at me.</span>
-    More text is inserted on this paragraph manually to test. <span class="tooltip tooltips three" data-text="Third tooltip here!">Awesome 3rd tooltip text</span>
-  </p>
+  <header class="app-header">
+    <h1>Killer Tooltips!</h1>
+    <div class="button-wrapper">
+      <button class="app-button btn-tooltip1 tooltip" data-text="Click here for button 1">Btn Tooltip1</button>
+      <button class="app-button btn-tooltip2 tooltip" data-text="Click here for button 2">Btn Tooltip2</button>
+    </div>
+  </header>
+
+  <section class="home-block-centered center-aligned-text home-block-centered--main">
+    <h2 class="home-block-centered--elements-separation bold-text">
+      Rollover any button or sky blue colored text to see a <span class="tooltip tooltip-color" data-text="I'm a cool tooltip!">tooltip</span>
+    </h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, <span class="tooltip tooltip-color" data-text="Got some text!">sed</span> do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+    <button class="tooltip home-block-centered__button home-block-centered--elements-separation button-hover-opacity"
+    data-text="Big tooltip!">
+      Big Btn Tooltip
+    </button>
+    <p class="home-block-centered--elements-separation">
+      Do you like it? <a href="#" class="tooltip tooltip-color" data-text="Killer tooltips' github page">Get it!</a>
+    </p>
+  </section>
+
+  <footer class="footer-main">
+    <ul>
+      <li>
+        <a href="http://google.com/" class="tooltip tooltip-color" data-text="link 1">Look</a>
+      </li>
+      <li>
+        <a href="http://apple.com" class="tooltip tooltip-color" data-text="link 2">Pricing</a>
+      </li>
+      <li>
+        <a href="http://someurl.com/" class="tooltip tooltip-color" data-text="link 3">More</a>
+      </li>
+      <li>
+        <a href="http://google.com/" class="tooltip tooltip-color" data-text="link 4">Jobs</a>
+      </li>
+      <li>
+        <a target="_blank" href="http://apple.com" class="tooltip tooltip-color" data-text="link 5">Blog</a>
+      </li>
+      <li>
+        <a href="http://someurl.com/" class="tooltip tooltip-color" data-text="link 6">Developers</a>
+      </li>
+      <li>
+        <a href="http://google.com/" class="tooltip tooltip-color" data-text="link 7">About</a>
+      </li>
+      <li>
+        <a href="http://apple.com" class="tooltip tooltip-color" data-text="link 8">Help</a>
+      </li>
+      <li>
+        <a href="http://someurl.com/" class="tooltip tooltip-color" data-text="link 9">Legal</a>
+      </li>
+    </ul>
+    <p>
+      © Copyright 2018. All rights reserved.
+    </p>
+  </footer>
 
   <!-- Scripts -->
   <script src="./js/vendor/jquery.min.js"></script>

@@ -1,8 +1,20 @@
 /*- Tags -*/
 body {
-  background-color: #999;
+  background-color: white;
   font: 13px/14px Helvetica, Arial, sans-serif;
   color: #333;
+  padding-top: 100px;
+}
+
+button {
+  background: none;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover {
+  text-decoration: underline;
 }
 
 p {
@@ -10,11 +22,153 @@ p {
   padding: 20px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /*- Classes -*/
-.center {
+.tooltip-color {
+  color: #5fcbf8;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  padding: 0 15px;
+  background-color: #313131;
+  top: 0;
+  z-index: 2;
+}
+
+.app-header h1 {
+  margin-left: 50px;
+  font-size: 40px;
+  color: #ddd;
+}
+
+.app-header button:first-child {
+  margin-right: 15px;
+}
+
+.app-header button:nth-child(2) {
+  font-weight: 600;
+}
+
+.app-header .btn-tooltip1,
+.app-header .btn-tooltip2 {
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+  background-color: rgba(246, 78, 115, 0.8);
+}
+
+.home-block-centered {
+  padding: 60px 0;
+  color: #4d4d4d;
+  width: 60%;
+  margin: 0 auto;
+  line-height: 1.2;
+}
+
+.home-block-centered h2 {
+  font-size: 38px;
+}
+
+.home-block-centered p {
+    font-size: 22px;
+}
+
+.home-block-centered__button {
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+  background-color: rgba(246, 78, 115, 0.8);
+  font-weight: 600;
+  font-size: 20px;
+  padding: 15px 30px;
+}
+
+.home-block-centered--elements-separation {
+  margin: 20px 0;
+}
+
+.center-aligned-text {
   text-align: center;
 }
 
-.tooltips {
-  color: red;
+.footer-main {
+  padding: 40px 150px;
+  text-align: center;
+  color: #999;
+  font-size: 17px;
+  background-color: #636363;
+}
+
+.footer-main ul {
+  list-style: none;
+  padding: 0;
+  display: block;
+}
+
+.footer-main li {
+  display: inline-block;
+  margin: 0 6px;
+  line-height: 1.3;
+}
+
+.footer-main a {
+  text-decoration: none;
+}
+
+.footer-main a:hover {
+    color: #999;
+}
+
+.footer-main div {
+  margin-top: 15px;
+}
+
+/*- Media queries  -*/
+@media screen and (max-width:595px) {
+  .app-header h1 {
+    font-size: 32px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width:480px) {
+  .app-header h1 {
+    font-size: 20px;
+    margin-left: 0;
+  }
+
+  .home-block-centered,
+  .footer-main {
+    padding: 20px;
+  }
+
+  .footer-main li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .footer-main p {
+    line-height: 1.3;
+  }
+
+  .app-header .btn-tooltip1,
+  .app-header .btn-tooltip2 {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .home-block-centered__button {
+    font-size: 15px;
+    padding: 15px 30px;
+  }
 }

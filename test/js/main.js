@@ -1,1 +1,1 @@
-tooltip({tooltipClass:'.tooltip', tooltipPosition:'bottom'});
+tooltip({tooltipPosition:'bottom'});

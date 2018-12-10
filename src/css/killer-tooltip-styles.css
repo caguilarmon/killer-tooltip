@@ -37,5 +37,5 @@
 .tooltip-text--bottom {
   top: 100%;
   left: 50%;
-  transform: translateX(-50%);  
+  transform: translateX(-50%);
 }

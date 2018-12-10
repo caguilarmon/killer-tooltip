@@ -78,20 +78,57 @@ const tooltip = function(settings) {
     };
 
     /**
+    * Handles click functionality on touch devices for anchor links
+    *
+    * @param {Object} currentTooltip - Html tag
+    * @param {document#event:click} e - Mouse Click Event
+    * @listens document#click
+    */
+    const clickHandlerForAnchor = (currentTooltip, e) => {
+      if (currentTooltip.hasClass('touch-tooltip') && !currentTooltip.hasClass('tooltip--no-more-hover')) {
+        hideTooltip(currentTooltip);
+        currentTooltip.removeClass('touch-tooltip tooltip--hover');
+        currentTooltip.addClass('tooltip--no-more-hover');
+        e.preventDefault();
+
+      }else if(!currentTooltip.hasClass('tooltip--no-more-hover')){
+        showTooltip(currentTooltip);
+        currentTooltip.addClass('touch-tooltip tooltip--hover');
+        e.preventDefault();
+      };
+    };
+
+    /**
+    * Handles click functionality on touch devices for non anchor elements
+    *
+    * @param {Object} currentTooltip - Html tag
+    * @param {document#event:click} e - Mouse Click Event
+    * @listens document#click
+    */
+    const clickHandlerForNonAnchor = (currentTooltip, e) => {
+      if (currentTooltip.hasClass('touch-tooltip')) {
+        hideTooltip(currentTooltip);
+        currentTooltip.removeClass('touch-tooltip tooltip--hover');
+      }else{
+        showTooltip(currentTooltip);
+        currentTooltip.addClass('touch-tooltip tooltip--hover');
+      };
+
+    };
+
+    /**
     * Adds or removes the tooltip upon click for mobile/touch devices
     */
     const onMouseclick = () => {
-      $('.tooltip').click(function() {
+      $('.tooltip').click(function(e) {
         const currentTooltip = $(this);
-        if (currentTooltip.hasClass('touch-tooltip')) {
-          hideTooltip(currentTooltip);
-          currentTooltip.removeClass('touch-tooltip tooltip--hover');
+        if (currentTooltip.is('a')){
+          clickHandlerForAnchor(currentTooltip, e);
         }else{
-          showTooltip(currentTooltip);
-          currentTooltip.addClass('touch-tooltip tooltip--hover');
+          clickHandlerForNonAnchor(currentTooltip, e);
         };
-        $('span.tooltip').not(currentTooltip).removeClass('touch-tooltip tooltip--hover');
-        hideTooltip($('span.tooltip').not(currentTooltip));
+        $('.tooltip').not(currentTooltip).removeClass('touch-tooltip tooltip--hover');
+        hideTooltip($('.tooltip').not(currentTooltip));
       });
     };
 

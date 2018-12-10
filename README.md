@@ -13,7 +13,6 @@ Operating instructions
 
 |Name                       |Type    |Description                                                  |Required |
 |---------------------------|--------|-------------------------------------------------------------|---------|
-|settings.tooltipClass      |Object  |Html tag's CSS class                                         |Yes      |
 |settings.tooltipPosition   |string  |Tooltip position                                             |Yes      |
 
 
